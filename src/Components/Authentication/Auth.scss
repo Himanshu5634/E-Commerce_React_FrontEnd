@@ -1,0 +1,110 @@
+@mixin divCenter($display, $justifyContant, $alignItem) {
+    display: $display;
+    justify-content: $justifyContant;
+    align-items: $alignItem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.auth {
+    height: 100vh;
+    width: 100vw;
+    @include divCenter(flex, center, center);
+    flex-direction: column;
+    z-index: 1;
+    position: absolute;
+    backdrop-filter: blur(8px);
+    
+
+    .container {
+        width: 30vw;
+        padding: 2rem;
+        background-color: #F7F7F7;
+        border: 1px solid black;
+        border-radius: 15px;
+        @include divCenter(flex, center, center);
+        flex-direction: column;
+
+    
+        .close{
+            width: 100%;
+            display: flex;
+            justify-content: end;
+
+            img{
+                width: 20px;
+            }
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .form-container {
+            width: 100%;
+
+            form {
+                .input {
+                    margin-top: 20px;
+
+                    label{
+                        margin-right: 10px;
+                    }
+
+                    span{
+                        color: red;
+                    }
+
+                    .input-field {
+
+                        input {
+                            padding: 10px;
+                            width: 100%;
+                            background-color: transparent;
+                            border: none;
+                            border-bottom: 1px solid black;
+                            outline: none;
+                        }
+
+                        .error{
+                            border: 2px solid red;
+                            border-radius: 5px;
+                        }
+
+                    }
+                }
+
+                .auth-btn {
+                    width: 100%;
+
+                    button {
+                        width: 100%;
+                        margin-top: 20px;
+                        padding: 10px;
+                    }
+                }
+            }
+        }
+
+        .auth-condition {
+            text-align: center;
+            margin-top: 15px;
+
+            span{
+                font-weight: 600;
+                cursor: pointer;
+            }
+        }
+    }
+
+    @media (max-width : 768px) {
+        .container{
+            width: 70%;
+        }
+    }
+}

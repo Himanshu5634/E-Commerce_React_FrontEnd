@@ -1,0 +1,199 @@
+@mixin divCenter($display,$justifyContant,$alignItem){
+    display: $display;
+    justify-content: $justifyContant;
+    align-items: $alignItem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    @include divCenter(flex, space-evenly, center);
+    background-color: #FFB22C;
+    height: 50px;
+    padding: 2rem;
+ 
+    .nav-logo {
+        font-size: 1.3rem;
+        font-weight: 600;
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+    }
+
+    .search-bar {
+        width: 40%;
+        @include divCenter(flex, center, center);
+
+        input {
+            width: 100%;
+            padding: 0.7rem;
+            background-color: transparent;
+            border: 2px solid black;
+            border-right: none;
+            border-radius: 8px 0px 0px 8px;
+            outline: none;
+        }
+
+        .magnifying {
+            padding: 0.3rem;
+            border: 2px solid black;
+            border-left: none;
+            border-radius: 0px 8px 8px 0px;
+            
+            img {
+                width: 25px;
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .nav-lists {
+        ul {
+            @include divCenter(flex, center, center);
+            list-style: none;
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
+
+            li {
+                margin-left: 25px;
+                font-size: 1.1rem;
+                font-weight: 400;
+            }
+
+            li:after {
+                content: "";
+                width: 0%;
+                height: 2px;
+                background-color: black;
+                margin-top: auto;
+                display: block;
+                transition: all 0.5s ease;
+            }
+
+            li:hover:after {
+                width: 100%;
+            }
+        }
+    }
+
+    .authentication {
+        @include divCenter(flex, center, center);
+
+        .sign-up-btn {
+            width: 100%;
+            
+            button {
+                width: 100%;
+                padding: 10px;
+                font-size: 15px;
+                background-color: black;
+                color: white;
+                border: none;
+                border-radius: 5px;
+            }
+        }
+
+        .user-profile {
+            cursor: pointer;
+            
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                transition: border-color 0.3s;
+            }
+        }
+    
+        .dropdown-menu {
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 150px;
+
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    padding: 10px 15px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    color: #333;
+                    transition: background-color 0.3s, color 0.3s;
+
+                    &:hover {
+                        background-color: #f0f0f0;
+                        color: #007bff;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* 📱 Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+
+        .search-bar {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .nav-lists ul {
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0;
+
+            li {
+                margin: 10px 0;
+                font-size: 1rem;
+            }
+        }
+
+        .authentication {
+            flex-direction: column;
+            margin-top: 10px;
+
+            .sign-up-btn button {
+                width: 80%;
+                padding: 8px;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+/* 📟 Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    .search-bar {
+        width: 60%;
+    }
+
+    .nav-lists ul li {
+        margin-left: 15px;
+        font-size: 1rem;
+    }
+}
